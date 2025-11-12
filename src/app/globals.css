@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../../.flowbite-react/class-list.json";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* If using Tailwind's 'media' strategy instead of 'class', replace .dark with: */
+@media (prefers-color-scheme: dark) {
+ /* Same overrides as above  */
+}
