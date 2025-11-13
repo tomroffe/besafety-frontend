@@ -1,5 +1,6 @@
 import { DarkThemeToggle, Button } from "flowbite-react";
 import Logo from "@/components/Logo"
+import LoginLogoutButton from "@/components/LoginLogoutButton";
 
 export default function Navigation() {
 
@@ -15,9 +16,7 @@ export default function Navigation() {
 
       {/* Right-aligned items: Language Selector and Theme Toggle */}
       <div className="flex items-center justify-center sm:justify-start space-x-2 w-full sm:w-auto">
-        <Button href="/login" type="button" className="h-11">
-          Login
-        </Button>
+        <LoginLogoutButton />
         <DarkThemeToggle className="border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 focus:ring-0 bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-11 w-11 " />
       </div>
     </nav>

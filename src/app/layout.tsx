@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeModeScript, ThemeProvider } from "flowbite-react";
 import Navigation from '../app/components/Navigation';
-import theme from '../app/flowbite-theme';
 import { ThemeInit } from "../../.flowbite-react/init";
 import { Roboto } from "next/font/google";
 import { clsx } from 'clsx';
@@ -27,7 +26,7 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body className={clsx(roboto.className, 'flex h-full flex-col antialiased bg-gray-100 dark:bg-gray-800')}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
           <ThemeInit />
           <Navigation />
           {children}
