@@ -1,0 +1,36 @@
+name: besafety-frontend
+services:
+  db:
+    image: postgres:18-alpine3.22
+    restart: always
+    shm_size: 128mb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    volumes:
+     - db-data:/var/lib/postgresql
+    environment:
+      - POSTGRES_PASSWORD=Metsys123!
+      - POSTGRES_USER=api
+      - POSTGRES_DB=besafety
+  frontend:
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+      target: dev
+    image: ghcr.io/tomroffe/besafety-frontend:latest
+    volumes:
+      - ../../:/app
+      - /app/node_modules
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+      - ../../.env.local
+    depends_on:
+      - db
+volumes:
+  db-data:
